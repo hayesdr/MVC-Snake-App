@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Snake>
+
+@{
+    ViewData["Title"] = "Search Page";
+}
+
+<div class="wrapper" style="padding-top: 20px">
+    <h1 class="display-4" style="padding-top:10px; text-align:center">Search For Snakes</h1>
+    <div class="sidebar">
+        <a asp-action="Create" style="float:left; padding-left:1px;color:black; font-size:16px; "><input type="button" value="Enter a New Species" style="width:100%; background: rgb(185,185,185); border: none;" /></a>
+            <hr>
+        <a asp-action="Index" style="float:left;padding-top:3px; color:black;"><input type="button" value="Return to All Snakes" style="width:104%; background: rgb(185,185,185); border: none;" /></a>
+    </div>
+    <br />
+        <div class="text-center">
+        <div class="container" style="float: left">
+            
+            @*@using(Html.BeginForm("RegionSort", "Snake", FormMethod.Get))
+            {           
+                
+            } *@
+            <form asp-controller="Snake" asp-action="RegionSort" style="float: right;">
+            <p>
+                @Html.DropDownList("regionString", new List<SelectListItem>
+                {
+                   new SelectListItem{ Text="North" },
+                   new SelectListItem{ Text="East" },
+                   new SelectListItem{ Text="South" },
+                   new SelectListItem{ Text="West" }
+                })
+
+                <input type="submit" value="Region" />
+            </p>
+            </form>
+            <form asp-controller="Snake" asp-action="Index" style="float: right;padding-right:5px">
+            <p>
+                Keyword: <input type="text" name="SearchString" />
+                <input type="submit" value="Filter" style="text-transform:capitalize;" />
+            </p>
+            </form>
+            <br />
+            
+        </div>
+<br />
+<table class="table table-bordered" style="background: rgba(211, 211, 211, 0.1); ">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Level)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+            @if (Model != null)
+            {
+                @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td style="text-align: left">
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td style="text-align: center">
+                @Html.DisplayFor(modelItem => item.Level)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+            }
+            
+    </tbody>
+</table>
+</div>
+</div>
+

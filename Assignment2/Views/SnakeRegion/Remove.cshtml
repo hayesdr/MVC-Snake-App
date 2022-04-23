@@ -1,0 +1,23 @@
+﻿@using Assignment2.Models.Entities
+@model SnakeRegion
+
+@{
+    var snake = Model!.Snake;
+    var region = Model!.Region;
+    ViewData["Title"] = "Please confirm removing region";
+    var question = $"Are you sure you want to remove {snake!.Name} " +
+        $"from {region!.RegionName}";
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@question</h3>
+<div>
+    <div>@Model.Id</div>
+    <form asp-action="Remove" asp-controller="SnakeRegion">
+        <input type="hidden" name="Id" value="@Model!.Id" />
+        <input type="hidden" name="SnakeId" value="@snake!.Id" />
+        <input type="submit" value="Yes, Remove region" class="btn btn-danger" /> |
+        <a asp-action="Details" asp-controller="Snake" asp-route-id="@snake!.Id">
+            Back to @Model.Snake?.Name Details
+        </a>
+    </form>
+</div>

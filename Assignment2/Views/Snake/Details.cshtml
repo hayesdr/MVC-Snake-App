@@ -1,0 +1,80 @@
+﻿@model Snake
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@Html.DisplayFor(model => model.Name)</h1>
+<div class="wrapper">
+    <div class="sidebar">
+        <a asp-action="Create" style="float:left; padding-left:1px;color:black; font-size:16px; "><input type="button" value="Enter a New Species" style="width:100%; background: rgb(185,185,185); border: none;" /></a>
+            <hr>
+        <a asp-action="Index" style="float:left;padding-top:3px; color:black;"><input type="button" value="Return to All Snakes" style="width:104%; background: rgb(185,185,185); border: none;" /></a>
+    </div>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <hr />
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <hr />
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Level)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Level)
+        </dd>
+        <hr />
+    </dl>
+</div>
+<br />
+<h3>Registered Regions</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                RegionID
+            </th>
+            <th>
+                RegionName
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var snakeregion in Model.Regions)
+            {
+                <tr>
+                    <td>
+                        @snakeregion.RegionId
+                    </td>
+                    <td>
+                        @snakeregion.RegionName
+                    </td>
+                    <td>
+                        <a asp-action="remove" asp-controller="SnakeRegion"
+                            asp-route-id="@Model!.Id" asp-route-regionId="@snakeregion.RegionId">
+                            Remove Region
+                        </a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit Snake Details</a> |
+    <a asp-action="Register" asp-controller="Region" asp-route-id="@Model?.Id">Register a New Region</a> |
+</div>
+</div>

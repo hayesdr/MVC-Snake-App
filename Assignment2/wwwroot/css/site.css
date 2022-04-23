@@ -1,0 +1,90 @@
+html {
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font: bold;
+}
+
+#sidebar {
+    float: left;
+    width: 20%;
+    background-color: #F9F8F2;
+}
+.float-left-area {
+    width: 70%;
+    float: left;
+}
+
+.float-right-area {
+    width: 30%;
+    float: left;
+}
+
+.inner-left {
+    padding: 5px 5px 5px 5px;
+    margin-right: 10px;
+    border: #999999 1px solid;
+    min-height: 60px;
+}
+
+.inner-right {
+    font-size: 11px;
+    padding: 5px 5px 5px 5px;
+    border: #999999 1px solid;
+    min-height: 60px;
+}
+
+.clear-floated {
+    clear: both;
+    height: 1px;
+    font-size: 1px;
+    line-height: 1px;
+    padding: 0;
+    margin: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+* {
+    list-style: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    background: #f5f6fa;
+}
+
+.wrapper .sidebar {
+    background: rgb(185,185,185);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 155px;
+    height: 86%;
+    padding: 20px 0;
+    top:56px;
+    transition: all 0.5s ease;
+}
+

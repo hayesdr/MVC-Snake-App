@@ -1,0 +1,16 @@
+﻿@using Assignment2.Models.Entities.ViewModels
+@model SnakeRegionVM
+
+<h3>
+    Are you sure you want to add the @Model!.Snake!.Name to the @Model!.Region!.RegionName?
+</h3>
+
+
+<form asp-action="Create" asp-route-id="@Model.Snake!.Id" asp-route-regionId="@Model.Region.RegionId">
+    <input type="hidden" name="Id" value="@Model.Snake" />
+    <input type="hidden" name="regionId" value="@Model.Region" />
+    <input type="submit" value="Register" class="btn btn-danger" /> |
+    <a asp-action="Register" asp-controller="Region"
+       asp-route-id="@Model!.Snake!.Id">Don't Register</a>
+</form>
+
